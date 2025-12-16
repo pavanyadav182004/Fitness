@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Fitness</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            font-family: 'segoe ui', sans-serif;
+            background: #f4f4f4;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        .header {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            margin-top: -20px;
+        }
+
+        .nav {
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            font-size: 18px;
+            color: white;
+            margin-right: 90px;
+            /* margin-bottom: 18px; */
+            transition: transform 0.3s ease-in-out;
+
+
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            list-style: none;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 20px;
+            font-weight: bold;
+
+        }
+
+        .nav ul li a:hover {
+            color: red;
+            /* background-color: red; */
+
+        }
+
+        /* Search */
+        .service:hover .dropdown {
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+        }
+
+        .search-container {
+
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 10px;
+            overflow: hidden;
+        }
+
+        .search-container i {
+            color: gray;
+            font-size: 16px;
+            margin-right: 6px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            border-radius: 20px;
+            font-size: 19px;
+            width: 180px;
+        }
+
+        .search-container button {
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-left: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: rgb(0, 255, 51);
+        }
+
+        /* Login */
+        .login a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            display: block;
+            /* border: 2px solid white; */
+            border-radius: 5px;
+            background-color: red;
+            font-weight: bold;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+
+
+        }
+
+        .login a:hover {
+            color: black;
+            background-color: rgb(0, 255, 0);
+        }
+
+        /* Main */
+
+        .banner img {
+            width: 100%;
+            height: 670px;
+            /* border-radius: 10px; */
+            /* filter: blur(0px); */
+            filter: brightness(60%);
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: start;
+            padding: 0px -20px;
+            color: white;
+            text-shadow: 0px 0px 8px black;
+            margin-left: -195px;
+            margin-top: -80px;
+
+
+        }
+
+        .banner-text h1 {
+            font-size: 100px;
+            font-weight: bold;
+            text-transform: uppercase;
+
+        }
+
+
+        .banner-text p {
+            font-size: 20px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .banner li {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: start;
+            padding: 0px -20px;
+            color: white;
+            /* text-shadow: 0px 0px 8px black; */
+            margin-left: -35%;
+            margin-top: 10%;
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 20px;
+            font-size: 30px;
+            background-color: rgb(0, 0, 0);
+            width: 13%;
+            text-align: center;
+            list-style: none;
+            height: 6.5%;
+            font-weight: bold;
+
+
+        }
+
+        .banner li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+
+        }
+
+        .banner li:hover {
+
+            background-color: rgb(0, 255, 72);
+            border: 3px solid rgb(0, 255, 55);
+            color: red;
+
+        }
+
+        .banner a {
+            color: red;
+        }
+
+        /* video  */
+        .video {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            height: 10%;
+            width: 100%;
+
+        }
+
+        .video video {
+            height: 5%;
+            width: 80%;
+        }
+
+        /* Card*/
+        .card {
+            margin-top: 50px;
+        }
+
+        .card h1 {
+            font-size: 45px;
+            margin-left: 127px;
+            text-transform: uppercase;
+            color: black;
+            margin-top: 50px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-left: 110px;
+        }
+
+        /* Each card */
+        .card-img {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform .3s ease;
+        }
+
+        .card-img:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Card Image */
+        .card-img img {
+            width: 100%;
+            height: 205px;
+            object-fit: cover;
+        }
+
+        /* Text Box */
+        .card-name-hp {
+            padding: 15px;
+        }
+
+        .card-name-hp h3 {
+            font-size: 18px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .card-name-hp p {
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* banner2 */
+        .banner2 img {
+            margin-top: 50px;
+            width: 100%;
+            height: 660px;
+            filter: brightness(40%);
+            /* filter: brightness(5px); */
+        }
+
+        .banner2pt {
+            /* position:absolute ; */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: start;
+            margin-left: 32%;
+            color: white;
+            margin-top: -30%;
+        }
+
+        .banner2pt h1 {
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            margin-left: 12%;
+        }
+
+        .banner2pt p {
+            font-size: 20px;
+            margin-top: 10px;
+            text-align: left;
+            margin-left: 13%;
+            font-size: 18px;
+        }
+
+        .banner2pt li {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            text-align: start;
+            color: white;
+            /* text-shadow: 0px 0px 8px black; */
+            margin: left;
+            margin-top: 199px;
+            background-color: rgb(0, 0, 0);
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 25px;
+            font-size: 30px;
+            width: 190px;
+            height: 50px;
+            list-style: none;
+            padding-left: 10px;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 110px;
+
+
+        }
+
+        .banner2pt li:hover {
+            background-color: rgb(0, 255, 0);
+            border: 2px solid rgb(0, 255, 0);
+            color: black;
+        }
+
+        /* banner3 */
+        .banner3 img {
+            position: relative;
+            margin-top: 50px;
+            width: 100%;
+            height: 610px;
+            filter: brightness(40%);
+            /* filter: brightness(5px); */
+            margin-bottom: -1%;
+        }
+
+        .banner3pt {
+            /* position: absolute; */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            margin-left: 43%;
+            color: white;
+            margin-top: -20%;
+
+
+        }
+
+        .banner3pt h1 {
+            /* position: absolute; */
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            margin-left: 20%;
+
+
+        }
+
+        .banner3pt p {
+            /* position: absolute; */
+            font-size: 20px;
+            margin-top: 10px;
+            text-align: center;
+            margin-left: 20%;
+        }
+
+        .banner3pt li {
+            /* position: absolute; */
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            color: white;
+            /* text-shadow: 0px 0px 8px black; */
+            margin-top: 43px;
+            background-color: rgb(0, 0, 0);
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 25px;
+            font-size: 30px;
+            width: 210px;
+            height: 48px;
+            list-style: none;
+            padding-left: 7px;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 58%;
+            /* margin-top: 1%; */
+
+
+        }
+
+        .banner3pt li:hover {
+            background-color: rgb(0, 255, 0);
+            border: 2px solid rgb(0, 255, 0);
+            color: black;
+        }
+
+
+
+
+        /*---Footer---*/
+        .footer {
+            position: relative;
+            color: white;
+            background-color: black;
+            margin-top: auto;
+
+        }
+
+        .down {
+            display: flex;
+            position: relative;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+        }
+
+        .footer {
+            width: 250px;
+
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+            color: rgb(0, 255, 72);
+        }
+
+        .footer p,
+        .footer li a {
+            color: white;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer li {
+            list-style: none;
+        }
+
+        .footer li a:hover {
+            color: red;
+        }
+
+        .footer i {
+            color: white;
+            font-size: 20px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .footer i:hover {
+            color: rgb(0, 255, 72);
+        }
+
+        .bottom {
+            position: relative;
+            background-color: #000000;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            border-top: 1px solid rgb(255, 255, 255);
+            color: white;
+        }
+
+        /*---Socal Media----*/
+        .footer .social-icons {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            /* margin-left: -27%; */
+            margin-left: 20px;
+
+        }
+
+        .footer .social-icons a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            /* background: #222; */
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+
+
+        }
+
+        .footer .social-icons a i {
+            position: relative;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+            margin-left: -10%;
+
+        }
+
+        .footer .social-icons a:hover {
+            background-color: rgb(0, 255, 72);
+
+        }
+
+        .footer .social-icons a:hover i {
+            color: black;
+        }
+      
+    </style>
+</head>
+
+<body>
+   
+    <!---Header-->
+    <header class="header">
+        <h1><a href="Home.html">Fitness</a></h1>
+        <nav class="nav">
+            <ul class="ul">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+                <li>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." />
+                        <button type="button">Search</button>
+                    </div>
+
+                </li>
+                <li class="login" id="loginBtn"><a href="login.html" onclick="">Login</a></li>
+                <li class="login" id="logoutBtn" style="display:none;"><a href="login.html" onclick="Logout()">Logout</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!---Main---->
+    <main class="main">
+        <div class="banner">
+            <img src="banner/bannar10.jpg" alt="">
+            <div class="banner-text">
+                <h1>Fitness And Health Style®</h1>
+                <p>The true test is not ability, it's willingness.</p>
+            </div>
+            <li><a href="">Click On </a></li>
+        </div>
+    </main>
+
+    <!----Video------>
+    <div class="video">
+        <iframe width="80%" height="700" src="https://www.youtube.com/embed/7Nwn2nLBqEU" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!----Card 1----->
+
+    <div class="card">
+        <h1>Fitness is For You</h1>
+
+        <div class="container">
+
+            <div class="card-img">
+                <img src="img/OIP4.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>Best Quality Trainers</h3>
+                    <p>Our gym is led by certified, highly experienced trainers who guide you with proper technique,
+                        safe form, and expert-level fitness knowledge.</p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/jim.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>Personalized Training Programs</h3>
+                    <p>Every member gets a plan designed according to their body type, goals, lifestyle, and fitness
+                        level — no one-size-fits-all routines.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/OIP.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>State-of-the-Art Gym Equipment</h3>
+                    <p>We provide modern, high-quality machines and tools to ensure maximum efficiency, safety, and
+                        comfort during every workout..</p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/images1.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>Build Strength & Confidence</h3>
+                    <p>A complete system designed for lasting health and strength.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!------Card  --2-->
+    <div class="container">
+
+        <div class="card-img">
+            <img src="img/images2.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Transformative Body Sculpting Workouts</h3>
+                <p>Specialized routines focused on reshaping your physique, building lean muscle, and enhancing
+                    overall body aesthetics.</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images3.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Strength & Conditioning Experts</h3>
+                <p>Learn how functional movement and intensity build elite performance.</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images4.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Fitness for Everyone</h3>
+                <p>Fitness adapts to every body type, age, and fitness level.</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images5.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Fat Loss Programs That Deliver Results</h3>
+                <p>We combine HIIT, functional training, and nutrition guidance to help you burn fat and transform
+                    your body quickly and safely.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- -banner 2-- -->
+    <div class="banner2">
+        <img src="banner/banner2.jpg" alt="">
+    </div>
+    <div class="banner2pt">
+        <h1>Enhance Your Life In & <br> Out Of The Gym</h1>
+        <p>For over 20 years, CrossFit has delivered life-changing results <br> to people of all ages and fitness
+            levels. The CrossFit formula <br>combines consistent training through constantly varied, <br>functional
+            movement with sound nutrition and community <br>accountability to build a program that never gets old.
+        </p>
+        <li><a href="" style="text-decoration: none; color: white ;">learn More</a></li>
+
+
+    </div>
+    </div>
+    <!------Card-3-->
+    <div class="card">
+        <h1 style="margin-top: 8%;">FAQs, Expert Answers</h1>
+
+        <div class="container">
+
+            <div class="card-img">
+                <img src="img/images7.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>How Many Days a Week Should I Train?</h3>
+                    <p>Most people see great results with 3–5 training days per week.
+                        Beginners can start with 3 days, while intermediate-to-advanced members benefit from 4–5
+                        sessions depending on goals and recovery.</p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/images8.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>How Long Does It Take to See Results?</h3>
+                    <p>You can feel changes in 2 weeks, see visible progress in 4–6 weeks, and experience major
+                        transformation in 12 weeks, depending on consistency, workout intensity, and nutrition.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/images9.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>Should I Focus on Weight Training or Cardio?</h3>
+                    <p>For fat loss and better body shape, weight training + moderate cardio is the perfect
+                        combination.
+                        Strength training builds muscle, while cardio boosts stamina and calorie burn.</p>
+                </div>
+            </div>
+
+            <div class="card-img">
+                <img src="img/images10.jpg" alt="">
+                <div class="card-name-hp">
+                    <h3>Is Weight Training Safe for Beginners?</h3>
+                    <p>Yes, completely safe — when guided by a certified trainer.
+                        Beginners start with light weights, focus on form, and gradually progress to prevent injury.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!------Card  --3-->
+    <div class="container">
+
+        <div class="card-img">
+            <img src="img/images11.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>What Should I Eat Before and After a Workout?</h3>
+                <p>Before workout: a balanced snack with carbs + protein (banana, oats, peanut butter toast).
+                    After workout: protein-rich foods to support recovery (eggs, whey protein, chicken, paneer).</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images12.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>How Do I Stay Motivated to Work Out Regularly?</h3>
+                <p>Set clear goals, track progress, follow a plan, join group sessions, or work with a trainer.
+                    Motivation comes and goes — discipline and routine keep you consistent.</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images13.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Why Am I Not Losing Weight Even After Working Out?</h3>
+                <p>Common reasons include: not enough protein, excess calories, inconsistent training, lack of
+                    sleep, or stress.
+                    Fixing your diet, sleep, and workout structure solves this quickly.</p>
+            </div>
+        </div>
+
+        <div class="card-img">
+            <img src="img/images14.jpg" alt="">
+            <div class="card-name-hp">
+                <h3>Do I Need Supplements to See Results?</h3>
+                <p>No. Supplements help but are not mandatory.
+                    A healthy diet gives most nutrients. Supplements like whey protein, creatine, and multivitamins
+                    are only add-ons.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!---Banner-3-->
+    <div class="banner3">
+        <img src="banner/crossfit.jpg" alt="">
+    </div>
+    <div class="banner3pt">
+        <h1>Find a Fitness Gym <br>Near You</h1>
+        <p>Your Fitness journey starts at a gym near you. We’ll help you br find a location that’s convenient
+            and ready to welcome you.
+        </p>
+        <li><a href="" style="text-decoration: none; color: white ;">Find</a></li>
+    </div>
+
+
+    <div class="c"></div>
+    <!--Footer-->
+    <footer>
+        <div class="down">
+            <div class="footer">
+                <p style="font-size: 60px; font-weight: bold;margin-bottom: 10%;"><a href=""
+                        style="text-decoration: none; color: white;">Fitness</a></p>
+            </div>
+            <div class="footer">
+                <h3>Contact Us</h3>
+                <p>Email:- Pavanyadav182004@gmail.com</p>
+                <p>Phone:- +91 9565879194</p>
+                <p>Address:- Borivali Mumbai </p>
+            </div>
+
+
+            <div class="footer">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Courses</a></li>
+                    <li><a href="">Workouts</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-telegram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>&copy; 2025 your company, All right reserved</p>
+        </div>
+    </footer>
+
+    <script>
+         function logout() {
+            localStorage.removeItem("isLoggedIn");
+
+            alert("Logout Successful!");
+            window.location.href = "login.html";
+        }
+
+         // Page load hote hi check
+    window.onload = function () {
+        let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (isLoggedIn === "true") {
+            document.getElementById("loginBtn").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "block";
+        } else {
+            document.getElementById("loginBtn").style.display = "block";
+            document.getElementById("logoutBtn").style.display = "none";
+        }
+    };
+
+    // Logout function
+    function logout() {
+        localStorage.removeItem("isLoggedIn");
+        alert("Logout Successful!");
+        window.location.href = "login.html";
+    }
+    </script>
+</body>
+
+</html>

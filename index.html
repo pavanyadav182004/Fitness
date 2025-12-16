@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            font-family: 'segoe ui', sans-serif;
+            background: #f4f4f4;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px;
+            /* background-image: url(img/back3.jpg); */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+
+            justify-content: center;
+        }
+
+        .header {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            margin-top: -27px;
+            font-size: 60px;
+        }
+
+        .nav {
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            font-size: 18px;
+            color: white;
+            margin-right: 90px;
+            /* margin-bottom: 18px; */
+            transition: transform 0.3s ease-in-out;
+
+
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            list-style: none;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 20px;
+            font-weight: bold;
+
+        }
+
+        .nav ul li a:hover {
+            color: red;
+            /* background-color: red; */
+
+        }
+
+        /* Search */
+        .service:hover .dropdown {
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+        }
+
+        .search-container {
+
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 10px;
+            overflow: hidden;
+        }
+
+        .search-container i {
+            color: gray;
+            font-size: 16px;
+            margin-right: 6px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            border-radius: 20px;
+            font-size: 19px;
+            width: 180px;
+        }
+
+        .search-container button {
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-left: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: rgb(0, 255, 51);
+        }
+
+        /* Login */
+        .login a {
+            color: white;
+            text-decoration: none;
+            padding: 7px 18px;
+            display: block;
+            /* border: 2px solid white; */
+            border-radius: 200px;
+            background-color: red;
+            font-weight: bold;
+            font-size: 25px;
+            width: 300px;
+            text-align: center;
+            
+
+
+        }
+
+        .login a:hover {
+            color: black;
+            background-color: rgb(0, 255, 0);
+        }
+
+
+        */ */ .ban {
+            height: 650px;
+            width: 100%;
+        }
+
+        .ban h1 {
+            font-size: 70px;
+            position: relative;
+            margin-top: -12%;
+            text-align: center;
+        }
+
+        .ban p {
+            font-size: 100px;
+            text-transform: capitalize;
+        }
+
+        footer {
+            color: white;
+            background-color: black;
+            position: fixed;
+            margin-bottom: -40%;
+            width: 100%;
+            text-align: center;
+            height: 80px;
+            padding: 9px;
+            border-top: 2px solid white;
+        }
+
+        .ban{
+            background-color: rgb(0, 0, 0);
+            height: 650px;
+            width: 100%;
+            color: white;
+            position: block;
+
+        }
+        .ban h1{
+            margin-top: 8%;
+        }
+
+        .a {
+            font-size: 40px;
+            background-color: rgb(255, 0, 195);
+            color: white;
+            border: 4px solid rgb(255, 0, 197);
+            width: 20%;
+            margin-left: 28%;
+            float: left;
+            border-radius: 20px;
+            font-weight: bold;
+            border-radius:  25px;
+            
+        }
+
+        .x {
+            font-size: 40px;
+            background-color: rgb(4, 255, 0);
+            color: white;
+            border: 4px solid rgb(4, 255, 0);
+            width: 20%;
+            margin-right: 28%;
+            float: right;
+            border-radius: 25px;
+            font-weight: bold;
+          
+            
+        }
+
+        .a:hover {
+            color: rgb(255, 255, 255);
+            background-color: blue;
+            border: 4px solid blue;
+        }
+
+        .x:hover {
+            background-color: red;
+            pointer-events: visible;
+            border: 4px solid red;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!---Header-->
+    <header class="header">
+        <h1><a href="">Fitness</a></h1>
+        <nav class="nav">
+            <ul class="ul">
+                 <!-- <li><a href="">Welcom To My Project Fitness & Helthstyle bodys</a></li> -->
+                <!--<li><a href="course.html">Courses</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." />
+                        <button type="button">Search</button>
+                    </div> 
+
+                </li>-->
+                <li class="login"><a href="#" onclick="logout()">Logout</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- img banner -->
+    <div class="ban">
+        <!-- <img src="wel img/pexels-leonmart-1552249.jpg" alt=""> -->
+        <h1>Welcome To My  Project<p> Fitness & Helth style</p>
+        </h1>
+
+        <button class="a" onclick="goHome()">Home</button>
+        <button class="x" onclick="logout()">Logout</button>
+
+    </div>
+
+
+    <!--Footer-->
+    <footer>
+        <h1>&copy; copyright 2025-26</h1>
+    </footer>
+
+    <script>
+        function goHome() {
+            window.location.href = "Home.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
+
+            alert("Logout Successful!");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+
+</html>

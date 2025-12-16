@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Workouts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            font-family: 'segoe ui', sans-serif;
+            background: #f4f4f4;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px;
+
+        }
+
+        .header {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            margin-top: -20px;
+        }
+
+        .nav {
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            font-size: 18px;
+            color: white;
+            margin-right: 90px;
+            /* margin-bottom: 18px; */
+            transition: transform 0.3s ease-in-out;
+
+
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            list-style: none;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 20px;
+            font-weight: bold;
+
+        }
+
+        .nav ul li a:hover {
+            color: red;
+            /* background-color: red; */
+
+        }
+
+        /* Search */
+        .service:hover .dropdown {
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+        }
+
+        .search-container {
+
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 10px;
+            overflow: hidden;
+        }
+
+        .search-container i {
+            color: gray;
+            font-size: 16px;
+            margin-right: 6px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            border-radius: 20px;
+            font-size: 19px;
+            width: 180px;
+        }
+
+        .search-container button {
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-left: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: rgb(0, 255, 51);
+        }
+
+        /* Login */
+        .login a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            display: block;
+            /* border: 2px solid white; */
+            border-radius: 5px;
+            background-color: red;
+            font-weight: bold;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+
+
+        }
+
+        .login a:hover {
+            color: black;
+            background-color: rgb(0, 255, 0);
+        }
+
+
+
+        /*---Footer---*/
+        .footer {
+            position: relative;
+            color: white;
+            background-color: black;
+            margin-top: auto;
+        }
+
+        .down {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+        }
+
+        .footer {
+            width: 250px;
+
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+            color: rgb(0, 255, 72);
+        }
+
+        .footer p,
+        .footer li a {
+            color: white;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer li {
+            list-style: none;
+        }
+
+        .footer li a:hover {
+            color: red;
+        }
+
+        .footer i {
+            color: white;
+            font-size: 20px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .footer i:hover {
+            color: rgb(0, 255, 72);
+        }
+
+        .bottom {
+            background-color: #000000;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            border-top: 1px solid rgb(255, 255, 255);
+            color: white;
+        }
+
+        /*---Socal Media----*/
+        .footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 90px;
+        }
+
+        .footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: #222;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: -60%;
+        }
+
+        .footer .social-icons a i {
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+            margin-left: 9px;
+        }
+
+        .footer .social-icons a:hover {
+            background-color: rgb(0, 255, 72);
+        }
+
+        .footer .social-icons a:hover i {
+            color: black;
+        }
+
+        /* Main Banner */
+        .banner img {
+            width: 100%;
+            height: 500px;
+            /* border-radius: 10px; */
+            /* filter: blur(0px); */
+            filter: brightness(60%);
+            margin-bottom: -0.2%;
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 0px -20px;
+            color: white;
+            text-shadow: 0px 0px 8px black;
+            margin-left: -30px;
+            margin-top: -80px;
+
+
+        }
+
+        .banner-text h1 {
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+
+        }
+
+
+        .banner-text p {
+            font-size: 20px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Section */
+        .sec {
+            background-color: rgb(245, 245, 220);
+            height: 80px;
+            width: 100%;
+            /* border: 2px solid black; */
+            display: flex;
+            /* border-bottom: 2px solid rgb(255, 255, 255); */
+            margin: 0%;
+            margin-top: 0;
+
+
+        }
+
+        .box1 {
+            height: 60px;
+            width: 15%;
+            background-color: rgb(0, 0, 0);
+            margin-left: 3%;
+            border-radius: 1px 2px;
+            align-items: center;
+            margin-top: 8px;
+            margin-left: 17%;
+
+        }
+
+        .box1 h1 {
+            color: #fdfdfd;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .box2 {
+            height: 60px;
+            width: 15%;
+            background-color: rgb(0, 0, 0);
+            margin-left: 3%;
+            border-radius: 1px 2px;
+            align-items: center;
+            margin-top: 8px;
+            margin-left: 10%;
+        }
+
+        .box2 h1 {
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .box3 {
+            height: 60px;
+            width: 15%;
+            background-color: rgb(0, 0, 0);
+            margin-left: 3%;
+            border-radius: 1px 1px;
+            align-items: center;
+            margin-top: 8px;
+            margin-left: 10%;
+        }
+
+        .box3 h1 {
+            color: #e3e2e2;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* Cart category */
+        /*Workout Categories */
+        .offer h1 {
+            height: 60%;
+            width: 100%;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background-color: black;
+            font-size: 60px;
+            text-transform: uppercase;
+            text-shadow: #000000 5px 5px 10px;
+        }
+
+        .offer p {
+            font-size: 20px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        .offer:hover {
+            color: white;
+            text-shadow: #000000 5px 5px 10px;
+
+        }
+
+        /*------ Workout Categories Cart-------- */
+        .cart {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 0px;
+            /* background-image: url("banner/bbb.jpg"); */
+            background-color: #000000;
+            width: 100%;
+
+        }
+
+        .card {
+
+            width: 350px;
+
+            padding: 10px;
+            /* border: 1px solid white; */
+            /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+            text-align: center;
+            transition: 0.3s ease;
+            margin-top: 3%;
+            /* background-color: rgb(255, 255, 255); */
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            /* border-radius: 5px; */
+
+            object-fit: cover;
+
+        }
+
+        .card h2 {
+            margin: 12px 0 8px;
+            font-size: 22px;
+            font-weight: 600;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+
+
+        .card a {
+            font-size: 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+
+        }
+
+
+        /*------Best Workouts-------- */
+        .offer1 h1 {
+            height: 60%;
+            width: 100%;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            /* background-color: black; */
+            font-size: 60px;
+            text-transform: uppercase;
+            text-shadow: #ffffff 5px 5px 10px;
+        }
+
+        .offer1 p {
+            font-size: 20px;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+
+        .offer1:hover {
+            color: white;
+            /* text-shadow: #000000 5px 5px 10px; */
+
+        }
+
+        /*------Best Workouts-------- */
+        .cart1 {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 0px;
+            /* background-image: url("banner/bbb.jpg"); */
+            /* background-color: #ffffff; */
+            width: 100%;
+
+        }
+
+        .card1 {
+
+            width: 450px;
+
+            padding: 10px;
+            /* border: 1px solid white; */
+            /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+            text-align: center;
+            transition: 0.3s ease;
+            margin-top: 2%;
+            /* background-color: rgb(255, 255, 255); */
+        }
+
+        .card1:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card1 img {
+            width: 100%;
+            height: 270px;
+            /* border-radius: 5px; */
+
+            object-fit: cover;
+
+        }
+
+        .card1 h2 {
+            margin: 12px 0 8px;
+            font-size: 24px;
+            font-weight: 600;
+            font-weight: bold;
+            color: rgb(25, 0, 255);
+        }
+
+
+        .card1 a {
+            font-size: 25px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgb(0, 8, 255);
+
+        }
+
+        .cart1 p {
+            font-size: 16px;
+            color: rgb(55, 55, 55);
+            text-transform: capitalize
+        }
+
+        .a h1 {
+            color: red;
+            font-size: 50px;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 1px 6px 11px rgb(0, 0, 0);
+            background-color: #000000;
+        }
+        .a h1:hover{
+            color: white;
+            text-shadow: 1px 1px 1px white;
+        }
+
+        .a h2 {
+            margin-left: 20%;
+            font-size: 45px;
+        }
+
+        .b h1 {
+            margin-left: 20%;
+            font-size: 30px;
+        }
+
+        .b p {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        .c {
+            border-bottom: 2px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <!---Header-->
+    <header class="header">
+        <h1><a href="Home.html">Fitness</a></h1>
+        <nav class="nav">
+            <ul class="ul">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+                <li>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." />
+                        <button type="button">Search</button>
+                    </div>
+
+                </li>
+                <!-- <li class="login"><a href="login.html" onclick="logout()">Logout</a></li> -->
+                 <li class="login"><a href="login.html" onclick="">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Banner--->
+    <main class="main">
+        <div class="banner">
+            <img src="banner/banner3.jpg" alt="">
+            <div class="banner-text">
+                <h1>Free Workout Plans</h1>
+                <p>The most comprehensive database of free workout routines anywhere! Download workout plans any goal or
+                    experience level.</p>
+    </main>
+
+    <!---Section--->
+    <div class="sec">
+        <div class="box1">
+            <h1>1000+ <br>
+                Workouts</h1>
+
+        </div>
+        <div class="box2">
+            <h1>400M <br>
+                Downloads</h1>
+        </div>
+        <div class="box3">
+            <h1>120+ <br>
+                Contributors</h1>
+        </div>
+    </div>
+
+    <!---Workout category-->
+    <div class="offer">
+        <h1>Workout Categories</h1>
+        <p>Choose a category that best suits the workout you're searching for. Once in the category, use the sort <br>
+            and filter options to find the right workout for your experience and goals.</p>
+    </div>
+    <!----Category--->
+
+    <!---Card-1--->
+    <div class="cart">
+        <div class="card">
+            <a href=""><img src="category/workoutsformen.jpg" alt="">
+                <h2>Workout For Man</h2>
+            </a>
+
+        </div>
+
+        <div class="card">
+            <a href=""> <img src="category/workoutsforwomen .jpg" alt="">
+                <h2>Workout For Women</h2>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href=""><img src="body/women-working.jpg" alt="">
+                <h2>Muscle Building</h2>
+            </a>
+        </div>
+        <div class="card">
+            <a href=""><img src="category/fatloss.jpg" alt="">
+                <h2>Fat Loss</h2>
+            </a>
+        </div>
+    </div>
+
+    <!-- -Card-2- -->
+    <div class="cart">
+        <div class="card">
+            <a href=""><img src="category/fullbody.jpg" alt="">
+                <h2>Full Body</h2>
+            </a>
+
+        </div>
+
+        <div class="card">
+            <a href=""> <img src="category/sportsperformance.jpg" alt="">
+                <h2>Sports Performance</h2>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href=""><img src="category/athome.jpg" alt="">
+                <h2>At Home</h2>
+            </a>
+        </div>
+        <div class="card">
+            <a href=""><img src="category/backworkouts.jpg" alt="">
+                <h2>Back Workout</h2>
+            </a>
+        </div>
+    </div>
+
+    <!---Card-3--->
+    <div class="cart">
+        <div class="card">
+            <a href=""><img src="category/shoulderworkout.jpg" alt="">
+                <h2>Shoulder Workouts</h2>
+            </a>
+
+        </div>
+
+        <div class="card">
+            <a href=""> <img src="category/legworkouts.jpg" alt="">
+                <h2>Leg Workouts</h2>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href=""><img src="category/tricepworkouts.jpg" alt="">
+                <h2>tricep Workouts</h2>
+            </a>
+        </div>
+        <div class="card">
+            <a href=""><img src="category/gluteworkouts.jpg" alt="">
+                <h2>Glute Workout</h2>
+            </a>
+        </div>
+    </div>
+
+
+    <!---Best Workouts-->
+    <div class="offer1">
+        <h1>Best Workouts</h1>
+        <p>The most downloaded workouts in our database during the past 24 hours. You can also find <br> top/trending
+            workouts by choosing a category (above) and scrolling to the "trending" view.</p>
+    </div>
+    <!----What I Offer--->
+
+    <!---Card---->
+    <div class="cart1">
+        <div class="card1">
+            <a href=""><img src="Workout/10_week_mass_building_program.jpg" alt="">
+                <h2>10 Week Mass Building Program</h2>
+                <p>This workout is designed to increase your muscle mass as much as possible in 10 weeks. Works each
+                    muscle group hard once per week using mostly heavy compound exercises.</p>
+            </a>
+
+        </div>
+
+        <div class="card1">
+            <a href=""> <img src="Workout/womens_12_week_workout.jpg" alt="">
+                <h2>Muscle & Strength’s 12 Week Women’s Workout Program</h2>
+                <p>This 12 week women's specific training program is perfect for any healthy woman who is looking to
+                    transform her body through a good weight lifting program.</p>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href=""><img src="Workout/12_week_fat_destroyer.jpg" alt="">
+                <h2>12 Week Fat Destroyer: Complete Fat Loss Workout & Diet Program</h2>
+                <p>This is a complete 12 week program to help you get ripped. Feature includes detailed diet plan and
+                    cardio schedule, along with a 4 day upper/lower muscle building split.</p>
+            </a>
+        </div>
+    </div>
+
+    <!---Card---->
+     <div class="cart1">
+        <div class="card1">
+            <a href=""><img src="Workout/phul.jpg" alt="">
+                <h2>Power Hypertrophy Upper Lower (P.H.U.L.) Workout</h2>
+                <p>Build both size and strength in this 4 day split based around basic compound movements. Get the best
+                    of both worlds with bodybuilding and powerlifting.</p>
+            </a>
+
+        </div>
+
+        <div class="card1">
+            <a href=""> <img src="Workout/30-day-womens.jpg" alt="">
+                <h2>Muscle & Strength's 30 Day Workout Plan For Women</h2>
+                <p>Looking for the best place to start working towards a leaner, solid, and stronger body? This thorough
+                    workout routine is specifically designed to get you there!</p>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href=""><img src="Workout/dumbbell_only.jpg" alt="">
+                <h2>Dumbbell Only Home Or Gym Full Body Workout</h2>
+                <p>Short on equipment? No worries! This dumbbell only workout can be used at home or in the gym for
+                    building muscle mass. You can also use this as a muscle shock workout to mix things up.</p>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="a">
+        <h1>Workout Tips & Advice</h1>
+        <h2>Workouts F.A.Q.</h2>
+    </div>
+    <div class="b">
+        <h1>1. What is the best routine for the gym?</h1>
+        <p>The best routine for the gym is one that is flexible with your schedule and you actually enjoy. These two
+            factors will contribute greatly to your ability to be consistent with your workouts. Consistency with your
+            workouts and progressing as you perform them is what will lead to results. <br><br>
+
+            That being said, there are plenty of great workout program styles one can do to build muscle, lose fat, or
+            build strength. The body composition goals (building muscle and losing fat) will be accomplished through
+            similar style workouts combined with differing nutritional principles, while those looking for strength
+            gains may need to focus on programs that are centered on the idea of specificity. <br><br>
+
+            To sum that statement up, if you want to change your body composition, you’ll want to train with volume. If
+            you want to build strength, you’ll want a program that is strength specific for the lifts you want to
+            improve such as the bench press, squat and deadlift.</p>
+
+
+        <h1>2. What body parts to work on what days?</h1>
+        <p>The answer to this question would assume that the person asking is referring to body part splits. In this
+            case, the way you split your days likely won’t matter too much, as long as you work every body part
+            throughout the week. <br> <br>
+
+            There may be some benefit into ensuring you don’t hit chest and shoulders or legs and back on consecutive
+            days, but if you do, it probably won’t be that big of an issue depending on your overall strength levels.
+            <br><br>
+
+            However, if you are looking to optimize your training by incorporating a higher training frequency (hitting
+            each muscle group more often throughout the week), you may want to look into pairing certain muscle groups
+            on certain workout days.
+        </p>
+
+        <h1>3. What should a beginner do at the gym?</h1>
+        <p>The best thing a beginner can do at the gym is seek out the help of a trained professional to assist them
+            with learning the proper form of each exercise. Practicing the basics and establishing a solid foundation in
+            terms of form will help a beginner lifter remain injury free throughout their life. <br><br>
+
+            If you are not in the position to hire a trained professional, you may want to proceed working out with some
+            level of caution. The same recommendation of practicing the fundamentals still applies. Start off with light
+            weight (the bar on barbell exercises) and record yourself performing exercises. <br><br>
+
+            With the exercise recordings, compare your form with examples of proper form. Evaluate how you are moving
+            and progress from there by either working on your form, or after you’ve mastered your form, adding weight.
+
+        <h1>4. What is the best workout routine for beginners?</h1>
+        <p>The best workout routine for true beginners is rather subjective to what the beginner is comfortable doing
+            and their understanding of how to perform exercises. <br> <br>
+
+            Their ultimate goal will also play a huge factor as well. <br><br>
+
+            Generally speaking though, beginners can start off performing anywhere between 2-4 workouts per week. These
+            workouts can be either full body workouts or upper/lower workouts. <br><br>
+
+            The workouts should focus on learning ideal movement patterns of fundamental lifts such as horizontal
+            presses, vertical presses, horizontal pulls, vertical pulls, squats, hip hinges, and loaded carries.
+            <br><br><br></p>
+        </p>
+    </div> 
+
+    <div class="c">
+
+    </div>
+    <!--Footer-->
+    <footer>
+        <div class="down">
+            <div class="footer">
+                <p style="font-size: 60px; font-weight: bold; margin-bottom: 10%;"><a href=""
+                        style="text-decoration: none; color: white; ">Fitness</a></p>
+            </div>
+            <div class="footer">
+                <h3>Contact Us</h3>
+                <p>Email:- Pavanyadav182004@gmail.com</p>
+                <p>Phone:- +91 9565879194</p>
+                <p>Address:- Borivali Mumbai </p>
+            </div>
+
+
+            <div class="footer">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                     <li><a href="">Home</a></li>
+                    <li><a href="">Courses</a></li>
+                    <li><a href="">Workouts</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-telegram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>&copy; 2025 your company, All right reserved</p>
+        </div>
+    </footer>
+
+    <script>
+         function logout() {
+            localStorage.removeItem("isLoggedIn");
+
+            alert("Logout Successful!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

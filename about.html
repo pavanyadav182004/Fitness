@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Workouts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            font-family: 'segoe ui', sans-serif;
+            background: #f4f4f4;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .header {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            margin-top: -20px;
+        }
+
+        .nav {
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            font-size: 18px;
+            color: white;
+            margin-right: 90px;
+            /* margin-bottom: 18px; */
+            transition: transform 0.3s ease-in-out;
+
+
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            list-style: none;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 20px;
+            font-weight: bold;
+
+        }
+
+        .nav ul li a:hover {
+            color: red;
+            /* background-color: red; */
+
+        }
+
+        /* Search */
+        .service:hover .dropdown {
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+        }
+
+        .search-container {
+
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 4px 10px;
+            overflow: hidden;
+        }
+
+        .search-container i {
+            color: gray;
+            font-size: 16px;
+            margin-right: 6px;
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            border-radius: 20px;
+            font-size: 19px;
+            width: 180px;
+        }
+
+        .search-container button {
+            font-size: 18px;
+            background: red;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-left: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: rgb(0, 255, 51);
+        }
+
+        /* Login */
+        .login a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            display: block;
+            /* border: 2px solid white; */
+            border-radius: 5px;
+            background-color: red;
+            font-weight: bold;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+
+
+        }
+
+        .login a:hover {
+            color: black;
+            background-color: rgb(0, 255, 0);
+        }
+
+
+
+        /*---Footer---*/
+        .footer {
+            position: relative;
+            color: white;
+            background-color: black;
+            margin-top: auto;
+
+        }
+
+        .down {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+        }
+
+        .footer {
+            position: relative;
+            width: 250px;
+
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+            color: rgb(0, 255, 72);
+        }
+
+        .footer p,
+        .footer li a {
+            color: white;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer li {
+            list-style: none;
+        }
+
+        .footer li a:hover {
+            color: red;
+        }
+
+        .footer i {
+            color: white;
+            font-size: 20px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .footer i:hover {
+            color: rgb(0, 255, 72);
+        }
+
+        .bottom {
+            position: relative;
+            background-color: #000000;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            border-top: 1px solid rgb(255, 255, 255);
+            color: white;
+        }
+
+        /*---Socal Media----*/
+        .footer .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: #222;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer .social-icons a i {
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .footer .social-icons a:hover {
+            background-color: rgb(0, 255, 72);
+        }
+
+        .footer .social-icons a:hover i {
+            color: black;
+        }
+
+        /* About  */
+      
+        .box {
+            display: inline;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            margin-top: 1%;
+            position: relative;
+            margin-bottom: 2%;
+        }
+
+        
+
+        .b {
+            background-color: #000000;
+            height: 400px;
+            width: 100%;
+         
+            /* margin-left: 20%; */
+            /* float: right; */
+
+        }
+
+        .b h1 {
+            font-size: 100px;
+            text-transform: uppercase;
+            margin-right: 1%;
+            /* background-color: #000000; */
+            color: rgb(0, 17, 255);
+            text-shadow: 0 4px 6px white;
+            text-align: center;
+            margin-top: 2px;
+            -webkit-text-stroke: 1px white;
+
+        }
+
+        .b h1:hover {
+            color: #f4f4f4;
+            -webkit-text-stroke: 1px rgb(0, 0, 0);
+        }
+
+        .b h3 {
+            text-align: center;
+            font-size: 40px;
+            color: white;
+            margin-top: 2%;
+            
+
+        }
+
+        .b p {
+            /* margin-top: 6%; */
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: bold;
+            margin-left: 5%;
+            margin-right: 5%;
+
+        }
+
+        .c img {
+            height: 800px;
+            width: 49%;
+            position: relative;
+            float: right;
+            border: #000000;
+        }
+
+        .d {
+            background-color: #000000;
+            height: 800px;
+            width: 49%;
+            /* margin-left: 20%; */
+            float: left;
+
+        }
+
+        .d h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+            margin-right: 1%;
+            /* background-color: #000000; */
+            color: rgb(0, 0, 0);
+            text-shadow: 0 4px 6px white;
+            text-align: center;
+            margin-top: 2px;
+            -webkit-text-stroke: 1px white;
+
+        }
+
+        .d h1:hover {
+            color: #f4f4f4;
+            -webkit-text-stroke: 1px rgb(0, 0, 0);
+        }
+
+        .d h3 {
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            margin-top: 2%;
+
+        }
+
+        .d p {
+            margin-top: 6%;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            margin-left: 20%;
+            margin-right: 20%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!---Header-->
+    <header class="header">
+        <h1><a href="Home.html">Fitness</a></h1>
+        <nav class="nav">
+            <ul class="ul">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="workouts.html">Workouts</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." />
+                        <button type="button">Search</button>
+                    </div>
+
+                </li>
+                <!-- <li class="login"><a href="login.html" onclick="logout()">Logout</a></li> -->
+                 <li class="login"><a href="login.html" onclick="">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--About-->
+    <div class="box">
+        <div class="a">
+            <!-- <img src="Workout/ab.jpg" alt=""> -->
+
+        </div>
+        <div class="b">
+            <h1>  About Base</h1>
+           <p>This website is designed for beginners as well as fitness lovers. We provide simple and effective workouts, fitness courses, and health tips that anyone can follow.</p>
+        </div>
+    </div>
+          
+           
+    </div>
+    <!-- <div class="box">
+        <div class="c">
+            <img src="Workout/img.jpg" alt="">
+
+        </div>
+        <div class="d">
+            <h1>
+                About
+                Max Randy</h1>
+            <h3>Certified Fitness Trainer and Founder</h3>
+            <p>
+                About
+                Max Randy
+                Certified Fitness Trainer and Founder
+
+                I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or
+                double click me to add your own content and make changes to the font. Feel free to drag and drop me
+                anywhere you like on your page. I’m a great place for you to tell a story and let your users know a
+                little more about you. <br><br>
+
+                ​
+
+                This is a great space to write a long text about your company and your services. You can use this space
+                to go into a little more detail about your company. Talk about your team and what services you provide.
+                Tell your visitors the story of how you came up with the idea for your business and what makes you
+                different from your competitors. Make your company stand out and show your visitors who you are.</p>
+        </div>
+    </div> -->
+   
+
+
+
+    <!--Footer-->
+    <footer>
+        <div class="down">
+            <div class="footer">
+                <p style="font-size: 60px; font-weight: bold; margin-bottom: 10%;"><a href=""
+                        style="text-decoration: none; color: white; ">Fitness</a></p>
+            </div>
+            <div class="footer">
+                <h3>Contact Us</h3>
+                <p>Email:- Pavanyadav182004@gmail.com</p>
+                <p>Phone:- +91 9565879194</p>
+                <p>Address:- Borivali Mumbai </p>
+            </div>
+
+
+            <div class="footer">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-telegram"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>&copy; 2025 your company, All right reserved</p>
+        </div>
+    </footer>
+
+
+    <script>
+         function logout() {
+            localStorage.removeItem("isLoggedIn");
+
+            alert("Logout Successful!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

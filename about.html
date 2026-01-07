@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Workouts</title>
+    <title>About</title>
     <style>
         * {
             margin: 0;
@@ -252,7 +252,7 @@
         }
 
         /* About  */
-      
+
         .box {
             display: inline;
             width: 100%;
@@ -263,13 +263,13 @@
             margin-bottom: 2%;
         }
 
-        
+
 
         .b {
-            background-color: #000000;
-            height: 400px;
+            background-color: #ffffff;
+            height: 200px;
             width: 100%;
-         
+
             /* margin-left: 20%; */
             /* float: right; */
 
@@ -280,34 +280,34 @@
             text-transform: uppercase;
             margin-right: 1%;
             /* background-color: #000000; */
-            color: rgb(0, 17, 255);
+            color: rgb(255, 0, 0);
             text-shadow: 0 4px 6px white;
             text-align: center;
-            margin-top: 2px;
+            margin-top: px;
             -webkit-text-stroke: 1px white;
 
         }
 
         .b h1:hover {
-            color: #f4f4f4;
+            color: #000000;
             -webkit-text-stroke: 1px rgb(0, 0, 0);
         }
 
         .b h3 {
             text-align: center;
             font-size: 40px;
-            color: white;
+            color: rgb(255, 255, 255);
             margin-top: 2%;
-            
+
 
         }
 
         .b p {
             /* margin-top: 6%; */
-            font-size: 30px;
-            color: rgb(255, 255, 255);
+            font-size: 20px;
+            color: rgb(0, 0, 0);
             text-align: center;
-            text-transform: capitalize;
+            text-transform: uppercase;
             font-weight: bold;
             margin-left: 5%;
             margin-right: 5%;
@@ -345,26 +345,177 @@
         }
 
         .d h1:hover {
-            color: #f4f4f4;
+            color: #ffffff;
             -webkit-text-stroke: 1px rgb(0, 0, 0);
         }
 
         .d h3 {
             text-align: center;
             font-size: 50px;
-            color: white;
+            color: rgb(255, 0, 0);
             margin-top: 2%;
 
         }
 
         .d p {
             margin-top: 6%;
-            font-size: 20px;
-            color: white;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
             text-align: center;
-            margin-left: 20%;
-            margin-right: 20%;
+            margin-left: 10%;
+            margin-right: 10%;
 
+        }
+
+        /* Default (Desktop) */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            background-color: black;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* About Section Responsive */
+        @media (max-width: 768px) {
+
+            /* Stack About sections vertically */
+            .box {
+                display: flex;
+                flex-direction: column !important;
+                align-items: center;
+            }
+
+            /* Image and text full width */
+            .c img,
+            .d {
+                width: 90% !important;
+                height: auto !important;
+                float: none !important;
+                margin-left: 20px;
+            }
+
+            .d {
+                margin-right: 14px;
+
+            }
+
+            /* Reduce text size */
+            .b h1 {
+                font-size: 36px !important;
+
+            }
+
+            .b p,
+            .d p {
+                font-size: 16px !important;
+                margin-left: 5% !important;
+                margin-right: 5% !important;
+                text-align: center;
+            }
+
+            .d h1 {
+                font-size: 28px !important;
+            }
+
+            .d h3 {
+                font-size: 20px !important;
+            }
+        }
+
+        /* Header toggle already there */
+        .menu-toggle {
+            display: none;
+            /* Desktop hide */
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: black;
+
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .search-container input {
+                width: 120px;
+                font-size: 14px;
+            }
+
+            .search-container button {
+                padding: 4px 8px;
+                font-size: 14px;
+            }
+
+            .login a {
+                width: auto;
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                right: 0px;
+                left: -22px;
+                width: 100%;
+                background: black;
+            }
+
+            .nav.active {
+                display: block;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 0;
+            }
         }
     </style>
 </head>
@@ -373,25 +524,38 @@
     <!---Header-->
     <header class="header">
         <h1><a href="Home.html">Fitness</a></h1>
+
         <nav class="nav">
-            <ul class="ul">
+            <ul>
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="course.html">Courses</a></li>
                 <li><a href="workouts.html">Workouts</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
+
                 <li>
                     <div class="search-container">
                         <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search..." />
                         <button type="button">Search</button>
                     </div>
-
                 </li>
-                <!-- <li class="login"><a href="login.html" onclick="logout()">Logout</a></li> -->
-                 <li class="login"><a href="login.html" onclick="">Login</a></li>
+
+               <li class="login" id="loginBtn">
+                    <a href="login.html">Login</a>
+                </li>
+
+                <li class="login" id="logoutBtn" style="display:none;">
+                    <a href="#" onclick="logout()">Logout</a>
+                </li>
+
             </ul>
         </nav>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
 
     <!--About-->
@@ -401,14 +565,16 @@
 
         </div>
         <div class="b">
-            <h1>  About Base</h1>
-           <p>This website is designed for beginners as well as fitness lovers. We provide simple and effective workouts, fitness courses, and health tips that anyone can follow.</p>
+            <h1> About Fitness</h1>
+            <p>At Fitness, we believe that health is wealth. Our mission is to provide top-quality fitness courses,
+                training programs, and guidance to individuals of all ages who are passionate about improving their
+                health, strength, and overall well-being.</p>
         </div>
     </div>
-          
-           
+
+
     </div>
-    <!-- <div class="box">
+    <div class="box">
         <div class="c">
             <img src="Workout/img.jpg" alt="">
 
@@ -419,24 +585,23 @@
                 Max Randy</h1>
             <h3>Certified Fitness Trainer and Founder</h3>
             <p>
-                About
-                Max Randy
-                Certified Fitness Trainer and Founder
+                Personal Training Courses:-- Tailored programs to help you achieve your fitness goals with one-on-one
+                guidance. <br>
+                Group Training Sessions:-- Energizing group workouts that motivate and challenge you to be your best.
+                <br>
+                ​Specialized Fitness Programs:-- Muscle gain, weight loss, body building, and endurance training. <br>
 
-                I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or
-                double click me to add your own content and make changes to the font. Feel free to drag and drop me
-                anywhere you like on your page. I’m a great place for you to tell a story and let your users know a
-                little more about you. <br><br>
+                Nutrition & Wellness Guidance:-- Learn the right nutrition and lifestyle strategies to complement your
+                workouts. <br>
 
-                ​
+                Our certified trainers and fitness experts provide evidence-based training methods to ensure safety,
+                efficiency, and maximum results. Whether you’re a beginner or a professional trainer, our courses are
+                designed to help you achieve your fitness dreams.
 
-                This is a great space to write a long text about your company and your services. You can use this space
-                to go into a little more detail about your company. Talk about your team and what services you provide.
-                Tell your visitors the story of how you came up with the idea for your business and what makes you
-                different from your competitors. Make your company stand out and show your visitors who you are.</p>
+            </p>
         </div>
-    </div> -->
-   
+    </div>
+
 
 
 
@@ -481,14 +646,38 @@
     </footer>
 
 
-    <script>
-         function logout() {
-            localStorage.removeItem("isLoggedIn");
+   <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
 
+        window.onload = function () {
+            let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (isLoggedIn === "true") {
+                // Login ho chuka hai → Logout dikhao
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "block";
+            } else {
+                // Login nahi hua → Login dikhao
+                document.getElementById("loginBtn").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "none";
+            }
+        };
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
             alert("Logout Successful!");
             window.location.href = "login.html";
         }
     </script>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav").classList.toggle("active");
+        }
+    </script>
+
 </body>
 
 </html>

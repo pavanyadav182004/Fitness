@@ -104,6 +104,7 @@
             color: gray;
             font-size: 16px;
             margin-right: 6px;
+
         }
 
         .search-container input {
@@ -136,7 +137,7 @@
         .login a {
             color: white;
             text-decoration: none;
-            padding: 8px 18px;
+            padding: 8px 13px;
             display: block;
             /* border: 2px solid white; */
             border-radius: 5px;
@@ -145,6 +146,7 @@
             font-size: 18px;
             width: 100px;
             text-align: center;
+            /* margin-left: 10%; */
 
 
         }
@@ -153,6 +155,64 @@
             color: black;
             background-color: rgb(0, 255, 0);
         }
+
+        /* ===== HAMBURGER ICON ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        /* ===== MOBILE MENU ===== */
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 22px;
+            }
+
+            .nav {
+                width: 100%;
+                display: none;
+                background: black;
+            }
+
+            .nav.active {
+                display: block;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px 0;
+            }
+
+            .nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav ul li a {
+                padding: 12px;
+                width: 100%;
+                display: block;
+            }
+
+            .search-container {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .login a {
+                width: 140px;
+                margin: 10px auto;
+            }
+        }
+
 
         /* Main */
 
@@ -225,8 +285,8 @@
 
         .banner li:hover {
 
-            background-color: rgb(0, 255, 72);
-            border: 3px solid rgb(0, 255, 55);
+            background-color: rgb(255, 0, 0);
+            border: 3px solid rgb(255, 0, 0);
             color: red;
 
         }
@@ -260,7 +320,17 @@
             margin-left: 127px;
             text-transform: uppercase;
             color: black;
-            margin-top: 50px;
+            margin-top: 40px;
+
+
+        }
+
+        .card h2 {
+            font-size: 45px;
+            margin-left: 127px;
+            text-transform: uppercase;
+            color: black;
+            margin-top: 15%
         }
 
         /* Container */
@@ -372,9 +442,14 @@
         }
 
         .banner2pt li:hover {
-            background-color: rgb(0, 255, 0);
-            border: 2px solid rgb(0, 255, 0);
+            background-color: rgb(255, 0, 0);
+            border: 2px solid rgb(255, 0, 0);
             color: black;
+        }
+
+        .banner2pt li a {
+            text-decoration: none;
+            color: white;
         }
 
         /* banner3 */
@@ -445,11 +520,15 @@
         }
 
         .banner3pt li:hover {
-            background-color: rgb(0, 255, 0);
-            border: 2px solid rgb(0, 255, 0);
+            background-color: rgb(255, 0, 0);
+            border: 2px solid rgb(255, 0, 0);
             color: black;
         }
 
+        .banner3pt li a {
+            text-decoration: none;
+            color: white;
+        }
 
 
 
@@ -477,34 +556,51 @@
 
         }
 
-        .footer h3 {
+        .footer p {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20%;
+        }
+
+        .footer a {
+
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-1 h3 {
             margin-bottom: 10px;
             color: rgb(0, 255, 72);
         }
 
-        .footer p,
-        .footer li a {
+        .footer-1 p,
+        .footer-1 li a {
             color: white;
             text-decoration: none;
             line-height: 1.8;
         }
 
-        .footer li {
+
+        .footer-1 li {
             list-style: none;
         }
 
-        .footer li a:hover {
+        .footer-1 li a:hover {
             color: red;
         }
 
-        .footer i {
+        .footer-2 li {
+            list-style: none;
+        }
+
+        .footer-2 i {
             color: white;
             font-size: 20px;
             margin-right: 10px;
             transition: 0.3s;
         }
 
-        .footer i:hover {
+        .footer-2 i:hover {
             color: rgb(0, 255, 72);
         }
 
@@ -519,7 +615,7 @@
         }
 
         /*---Socal Media----*/
-        .footer .social-icons {
+        .footer-2 .social-icons {
             position: relative;
             display: flex;
             gap: 10px;
@@ -529,7 +625,7 @@
 
         }
 
-        .footer .social-icons a {
+        .footer-2 .social-icons a {
             position: relative;
             display: flex;
             align-items: center;
@@ -544,7 +640,7 @@
 
         }
 
-        .footer .social-icons a i {
+        .footer-2 .social-icons a i {
             position: relative;
             color: white;
             font-size: 18px;
@@ -553,30 +649,284 @@
 
         }
 
-        .footer .social-icons a:hover {
+        .footer-2 .social-icons a:hover {
             background-color: rgb(0, 255, 72);
 
         }
 
-        .footer .social-icons a:hover i {
+        .footer-2 .social-icons a:hover i {
             color: black;
         }
-      
+
+
+
+        /* Media Qurie */
+        /* Mobile-1 */
+        /* ====== TABLET ====== */
+        @media (max-width: 1024px) {
+            .nav ul {
+                gap: 10px;
+            }
+
+            .banner-text h1 p li {
+                font-size: 60px;
+                margin-top: -20%;
+            }
+
+            .container {
+                margin-left: auto;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            body {
+                padding-top: 70px;
+            }
+
+            /* Header stays single row */
+            .header {
+                height: 70px;
+                flex-direction: row;
+                padding: 0 10px;
+            }
+
+            /* Hamburger */
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                z-index: 1200;
+            }
+
+            /* Mobile Menu Overlay */
+            .nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: black;
+                display: none;
+                padding: 25px 20px;
+            }
+
+            .nav.active {
+                display: block;
+            }
+
+            /* Menu list */
+            .nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+            }
+
+            .nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav ul li a {
+                font-size: 20px;
+                padding: 10px;
+                display: block;
+            }
+
+            /* Search */
+            .search-container {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .search-container input {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            /* Login / Logout */
+            .login a {
+                width: 100%;
+                margin: 15px auto 0;
+                font-size: 18px;
+            }
+        }
+
+        /* Banner- section-2 */
+        @media (max-width: 768px) {
+
+            .banner img {
+                height: 400px;
+            }
+
+            .banner-text {
+                position: absolute;
+                text-align: center;
+                margin: 0;
+                left: 50%;
+                top: 45%;
+                transform: translate(-50%, -50%);
+            }
+
+            .banner-text h1 {
+                font-size: 32px;
+                margin-bottom: 10%;
+            }
+
+            .banner-text p {
+                font-size: 18px;
+                margin-bottom: 190%;
+            }
+
+            .banner li {
+                width: 160px;
+                font-size: 18px;
+                height: 45px;
+                margin-left: -10px;
+                margin-top: -100px;
+                padding: 6px;
+
+                /* margin-bottom: 860%; */
+            }
+        }
+
+        /* Card-ke liye-3 */
+
+        @media (max-width: 1024px) {
+            .card-img {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-img {
+                width: 100%;
+            }
+
+            .card h1 {
+                font-size: 28px;
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+
+
+        /* video-4 */
+        @media (max-width: 768px) {
+            .video iframe {
+                height: 250px;
+                width: 95%;
+            }
+        }
+
+        /* Banner2 bannner3---5 */
+        @media (max-width: 768px) {
+
+            .banner2 img,
+            .banner3 img {
+                height: 400px;
+            }
+
+            .banner2pt,
+            .banner3pt {
+                /* margin: 0; */
+                text-align: center;
+                padding: 1px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .banner2pt h1 {
+                font-size: 28px;
+                /* margin: 0; */
+                margin-left: 57%;
+                margin-top: -50%;
+                white-space: nowrap;
+
+
+
+            }
+
+            .banner3pt h1 {
+                font-size: 28px;
+                /* margin: 0; */
+                margin-left: 66%;
+                margin-top: -50%;
+                white-space: nowrap;
+
+
+
+            }
+
+            .banner2pt p,
+            .banner3pt p {
+                font-size: 14px;
+                /* margin: 10px -10; */
+                margin-right: -33%;
+                word-break: break-all;
+                margin-left: 70%;
+
+                /* margin-right:0; */
+            }
+
+            .banner2pt li {
+                margin-top: -10px;
+                margin-left: 77%;
+            }
+
+            .banner3pt li {
+                /* margin: 20px auto; */
+                margin-top: 70px;
+                margin-left: 97%;
+            }
+        }
+
+        /* Footer */
+        @media (max-width: 768px) {
+
+            .down {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .footer p {
+                font-size: 40px;
+            }
+
+            .footer a {
+                margin-left: 59%;
+            }
+
+            .footer-2 .social-icons {
+                justify-content: center;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
-   
+
     <!---Header-->
     <header class="header">
         <h1><a href="Home.html">Fitness</a></h1>
-        <nav class="nav">
+        <!-- tuggels -->
+        <!-- Hamburger Icon -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="nav" id="navMenu">
             <ul class="ul">
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="course.html">Courses</a></li>
                 <li><a href="workouts.html">Workouts</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="about.html">About</a></li>
                 <li>
                     <div class="search-container">
                         <i class="fas fa-search"></i>
@@ -585,9 +935,15 @@
                     </div>
 
                 </li>
-                <li class="login" id="loginBtn"><a href="login.html" onclick="">Login</a></li>
-                <li class="login" id="logoutBtn" style="display:none;"><a href="login.html" onclick="Logout()">Logout</a></li>
-                
+                <li class="login" id="loginBtn">
+                    <a href="login.html">Login</a>
+                </li>
+
+                <li class="login" id="logoutBtn" style="display:none;">
+                    <a href="#" onclick="logout()">Logout</a>
+                </li>
+
+
             </ul>
         </nav>
     </header>
@@ -703,18 +1059,16 @@
     </div>
     <div class="banner2pt">
         <h1>Enhance Your Life In & <br> Out Of The Gym</h1>
-        <p>For over 20 years, CrossFit has delivered life-changing results <br> to people of all ages and fitness
-            levels. The CrossFit formula <br>combines consistent training through constantly varied, <br>functional
-            movement with sound nutrition and community <br>accountability to build a program that never gets old.
+        <p>Our programs help you build strength, confidence, and healthier habits that last beyond the gym.
         </p>
-        <li><a href="" style="text-decoration: none; color: white ;">learn More</a></li>
+        <li><a href="">learn More</a></li>
 
 
     </div>
     </div>
     <!------Card-3-->
     <div class="card">
-        <h1 style="margin-top: 8%;">FAQs, Expert Answers</h1>
+        <h2>FAQs, Expert Answers</h2>
 
         <div class="container">
 
@@ -813,7 +1167,7 @@
         <p>Your Fitness journey starts at a gym near you. We’ll help you br find a location that’s convenient
             and ready to welcome you.
         </p>
-        <li><a href="" style="text-decoration: none; color: white ;">Find</a></li>
+        <li><a href="">Find</a></li>
     </div>
 
 
@@ -822,10 +1176,9 @@
     <footer>
         <div class="down">
             <div class="footer">
-                <p style="font-size: 60px; font-weight: bold;margin-bottom: 10%;"><a href=""
-                        style="text-decoration: none; color: white;">Fitness</a></p>
+                <p><a href="Home.html">Fitness</a></p>
             </div>
-            <div class="footer">
+            <div class="footer-1">
                 <h3>Contact Us</h3>
                 <p>Email:- Pavanyadav182004@gmail.com</p>
                 <p>Phone:- +91 9565879194</p>
@@ -833,7 +1186,7 @@
             </div>
 
 
-            <div class="footer">
+            <div class="footer-1">
                 <h3>Quick Links</h3>
                 <ul class="list">
                     <li><a href="">Home</a></li>
@@ -843,7 +1196,7 @@
                     <li><a href="">About</a></li>
                 </ul>
             </div>
-            <div class="footer">
+            <div class="footer-2">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
                     <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
@@ -860,33 +1213,32 @@
     </footer>
 
     <script>
-         function logout() {
-            localStorage.removeItem("isLoggedIn");
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
 
+        window.onload = function () {
+            let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (isLoggedIn === "true") {
+                // Login ho chuka hai → Logout dikhao
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "block";
+            } else {
+                // Login nahi hua → Login dikhao
+                document.getElementById("loginBtn").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "none";
+            }
+        };
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
             alert("Logout Successful!");
             window.location.href = "login.html";
         }
-
-         // Page load hote hi check
-    window.onload = function () {
-        let isLoggedIn = localStorage.getItem("isLoggedIn");
-
-        if (isLoggedIn === "true") {
-            document.getElementById("loginBtn").style.display = "none";
-            document.getElementById("logoutBtn").style.display = "block";
-        } else {
-            document.getElementById("loginBtn").style.display = "block";
-            document.getElementById("logoutBtn").style.display = "none";
-        }
-    };
-
-    // Logout function
-    function logout() {
-        localStorage.removeItem("isLoggedIn");
-        alert("Logout Successful!");
-        window.location.href = "login.html";
-    }
     </script>
+
+
 </body>
 
 </html>

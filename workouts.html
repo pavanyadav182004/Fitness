@@ -175,6 +175,16 @@
 
         }
 
+        .footer-c a {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 100%;
+
+
+            text-decoration: none;
+            color: white;
+        }
+
         .footer h3 {
             margin-bottom: 10px;
             color: rgb(0, 255, 72);
@@ -533,7 +543,8 @@
             text-shadow: 1px 6px 11px rgb(0, 0, 0);
             background-color: #000000;
         }
-        .a h1:hover{
+
+        .a h1:hover {
             color: white;
             text-shadow: 1px 1px 1px white;
         }
@@ -556,6 +567,107 @@
         .c {
             border-bottom: 2px solid white;
         }
+
+
+        /* Header responsive */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            body {
+                padding-top: 70px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: black;
+                transform: translateY(-120%);
+                transition: 0.4s ease;
+                z-index: 999;
+            }
+
+            .nav.active {
+                transform: translateY(0);
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+            }
+
+            .search-container {
+                width: 90%;
+            }
+
+            /* CARDS RESPONSIVE */
+            .cart,
+            .cart1 {
+                flex-wrap: wrap;
+            }
+
+            .card,
+            .card1 {
+                width: 90%;
+                margin: auto;
+            }
+
+            /* SECTION BOX */
+            .sec {
+                flex-wrap: wrap;
+                height: auto;
+                justify-content: center;
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .box1,
+            .box2,
+            .box3 {
+                width: 180px;
+                margin: 0;
+            }
+
+            /* TEXT */
+            .banner-text h1 {
+                font-size: 36px;
+            }
+
+            .banner-text p {
+                font-size: 16px;
+            }
+
+            /* FOOTER */
+            .down {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer {
+                width: 100%;
+            }
+
+            .footer .social-icons {
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -563,13 +675,14 @@
     <!---Header-->
     <header class="header">
         <h1><a href="Home.html">Fitness</a></h1>
-        <nav class="nav">
+
+        <nav class="nav" id="navMenu">
             <ul class="ul">
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="course.html">Courses</a></li>
                 <li><a href="workouts.html">Workouts</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="about.html">About</a></li>
                 <li>
                     <div class="search-container">
                         <i class="fas fa-search"></i>
@@ -578,10 +691,20 @@
                     </div>
 
                 </li>
-                <!-- <li class="login"><a href="login.html" onclick="logout()">Logout</a></li> -->
-                 <li class="login"><a href="login.html" onclick="">Login</a></li>
+             <li class="login" id="loginBtn">
+                    <a href="login.html">Login</a>
+                </li>
+
+                <li class="login" id="logoutBtn" style="display:none;">
+                    <a href="#" onclick="logout()">Logout</a>
+                </li>
+
             </ul>
         </nav>
+        <!-- 3 Line Hamburger -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
 
     <!--Banner--->
@@ -738,7 +861,7 @@
     </div>
 
     <!---Card---->
-     <div class="cart1">
+    <div class="cart1">
         <div class="card1">
             <a href=""><img src="Workout/phul.jpg" alt="">
                 <h2>Power Hypertrophy Upper Lower (P.H.U.L.) Workout</h2>
@@ -823,9 +946,10 @@
 
             The workouts should focus on learning ideal movement patterns of fundamental lifts such as horizontal
             presses, vertical presses, horizontal pulls, vertical pulls, squats, hip hinges, and loaded carries.
-            <br><br><br></p>
+            <br><br><br>
         </p>
-    </div> 
+        </p>
+    </div>
 
     <div class="c">
 
@@ -833,9 +957,8 @@
     <!--Footer-->
     <footer>
         <div class="down">
-            <div class="footer">
-                <p style="font-size: 60px; font-weight: bold; margin-bottom: 10%;"><a href=""
-                        style="text-decoration: none; color: white; ">Fitness</a></p>
+            <div class="footer-c">
+                <p><a href="">Fitness</a></p>
             </div>
             <div class="footer">
                 <h3>Contact Us</h3>
@@ -848,7 +971,7 @@
             <div class="footer">
                 <h3>Quick Links</h3>
                 <ul class="list">
-                     <li><a href="">Home</a></li>
+                    <li><a href="">Home</a></li>
                     <li><a href="">Courses</a></li>
                     <li><a href="">Workouts</a></li>
                     <li><a href="">Contact</a></li>
@@ -871,14 +994,37 @@
         </div>
     </footer>
 
-    <script>
-         function logout() {
-            localStorage.removeItem("isLoggedIn");
+   <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
 
+        window.onload = function () {
+            let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (isLoggedIn === "true") {
+                // Login ho chuka hai → Logout dikhao
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("logoutBtn").style.display = "block";
+            } else {
+                // Login nahi hua → Login dikhao
+                document.getElementById("loginBtn").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "none";
+            }
+        };
+
+        function logout() {
+            localStorage.removeItem("isLoggedIn");
             alert("Logout Successful!");
             window.location.href = "login.html";
         }
     </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+    </script>
+
 </body>
 
 </html>

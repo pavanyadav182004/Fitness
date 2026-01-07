@@ -440,10 +440,116 @@
             color: orange;
         }
 
-        /* Responsive */
-        @media(max-width: 600px) {
+        /* ======================
+   RESPONSIVE HEADER
+====================== */
+
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            color: white;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 12px;
+                font-size: 16px;
+            }
+
+            .search-container input {
+                width: 120px;
+            }
+
+            .box {
+                width: 60%;
+                margin-top: 30%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            body {
+                padding-top: 70px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .header {
+                height: 70px;
+                padding: 0 10px;
+            }
+
+            .nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: black;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                display: none;
+                padding: 20px 0;
+            }
+
+            .nav ul.active {
+                display: flex;
+            }
+
+            .search-container {
+                width: 90%;
+            }
+
+            .search-container input {
+                width: 100%;
+            }
+
+            /* Login Box */
+            .box {
+                width: 90%;
+                margin: 120px auto 40px;
+                transform: none;
+                margin-left: auto;
+            }
+
             .box h1 {
                 font-size: 32px;
+            }
+
+            /* Footer */
+            .down {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .footer .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .box h1 {
+                font-size: 28px;
+            }
+
+            .box .btn {
+                font-size: 18px;
             }
         }
     </style>
@@ -453,13 +559,15 @@
     <!---Header-->
     <header class="header">
         <h1><a href="">Fitness</a></h1>
+        <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+
         <nav class="nav">
             <ul class="ul">
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="course.html">Courses</a></li>
                 <li><a href="workouts.html">Workouts</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="about.html">About</a></li>
                 <li>
                     <div class="search-container">
                         <i class="fas fa-search"></i>
@@ -502,7 +610,8 @@
                 </label><a href="#">Forget Password</a>
             </div>
             <!-- <div class="buttons"> -->
-            <a href="login.html"><button type="submit" class="btn">SignIn</button></a>
+            <button type="submit" class="btn">SignIn</button>
+
             <!-- </div> -->
         </form>
 
@@ -589,21 +698,27 @@
                 localStorage.setItem('uemail', uemail);
                 localStorage.setItem('upass', upass);
 
-                // localStorage.setItem("uemail", userEmail);
-                // localStorage.setItem("upass", userPassword);
-
-
-                // alert("Ragister Successfully !!");
                 showToast(successMsg);
-                window.location.href = 'login.html';
+
+                // 2 second ruk ke redirect
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
 
             } else {
                 showToast(errorMsg, "error");
-                // alert(" Password and confirm password does not match. try again");
             }
+
 
         });
     </script>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav ul").classList.toggle("active");
+        }
+    </script>
+
 </body>
 
 </html>

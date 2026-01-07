@@ -415,6 +415,120 @@
         .toast.invalid i {
             color: orange;
         }
+
+        /* ======================
+   RESPONSIVE HEADER
+====================== */
+
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            color: white;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 12px;
+                font-size: 16px;
+            }
+
+            .search-container input {
+                width: 120px;
+            }
+
+            .box {
+                width: 60%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            body {
+                padding-top: 70px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .header {
+                height: 70px;
+                padding: 0 10px;
+            }
+
+            .nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: black;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                display: none;
+                padding: 20px 0;
+            }
+
+            .nav ul.active {
+                display: flex;
+            }
+
+            .search-container {
+                width: 90%;
+            }
+
+            .search-container input {
+                width: 100%;
+            }
+
+            .login a {
+                width: 90%;
+            }
+
+            .box {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .box h1 {
+                font-size: 36px;
+            }
+
+            /* Footer */
+            .down {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .footer .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+
+            .box h1 {
+                font-size: 30px;
+            }
+
+            .box .btn {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -422,13 +536,15 @@
     <!---Header-->
     <header class="header">
         <h1><a href="">Fitness</a></h1>
+        <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+
         <nav class="nav">
             <ul class="ul">
                 <li><a href="Home.html">Home</a></li>
                 <li><a href="course.html">Courses</a></li>
                 <li><a href="workouts.html">Workouts</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="about.html">About</a></li>
                 <li>
                     <div class="search-container">
                         <i class="fas fa-search"></i>
@@ -458,7 +574,8 @@
                 <label for="" style="color: white; accent-color: white;"><input type="checkbox">Remember me
                 </label><a href="">Forget Password</a>
             </div>
-            <a href="Home.html"><button type="submit" class="btn">Login</button></a>
+            <button type="submit" class="btn">Login</button>
+
             <div class="register">
                 <p style="color: white; ">Don't have an account? <a href="Register.html">Register</a></p>
             </div>
@@ -507,60 +624,57 @@
     </footer>
 
     <script>
+let toastbox = document.getElementById("toastbox");
 
-        let toastbox = document.getElementById("toastbox");
+let successMsg = '<i class="fa-solid fa-circle-check"></i> Login Successful';
+let errorMsg = '<i class="fa-solid fa-circle-xmark"></i> Email or Password Wrong';
 
-        let successMsg = '<i class="fa-solid fa-circle-check"></i> Successfully Submitted';
-        let errorMsg = '<i class="fa-solid fa-circle-xmark"></i> Password Not Match';
-        let invalidMsg = '<i class="fa-solid fa-circle-exclamation"></i> Invalid Email !';
+function showToast(msg, type = "") {
+    let toast = document.createElement("div");
+    toast.classList.add("toast");
 
-        function showToast(msg, type = "") {
-            let toast = document.createElement("div");
-            toast.classList.add("toast");
+    if (type === "error") toast.classList.add("error");
 
-            if (type === "error") toast.classList.add("error");
-            if (type === "invalid") toast.classList.add("invalid");
+    toast.innerHTML = msg;
+    toastbox.appendChild(toast);
 
-            toast.innerHTML = msg;
-            toastbox.appendChild(toast);
+    setTimeout(() => {
+        toast.remove();
+    }, 2000);
+}
 
-            setTimeout(() => {
-                toast.remove();
-            }, 2000);
-        }
+document.getElementById('useform').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        document.getElementById('useform').addEventListener('submit', function (event) {
-            event.preventDefault();
+    let uemail = document.getElementById('uemail').value;
+    let upass = document.getElementById('upass').value;
 
-            let uemail = document.getElementById('uemail').value;
-            let upass = document.getElementById('upass').value;
+    let storedemail = localStorage.getItem('uemail');
+    let storedpassword = localStorage.getItem('upass');
 
+    if (uemail === storedemail && upass === storedpassword) {
 
-            let storedemail = localStorage.getItem('uemail');
-            let storedpassword = localStorage.getItem('upass');
-            localStorage.setItem("isLoggedIn", "true");
-
-
-
-            console.log("Enter:", uemail, upass);
-            console.log("Stored:", storedemail, storedpassword);
-
-
-            if (uemail === storedemail && upass === storedpassword) {
-
-                showToast(successMsg);
-
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1500);
-
-            } else {
-                showToast(errorMsg, "error");
-            }
-        });
+        // ✅ LOGIN SUCCESS → abhi login set hoga
         localStorage.setItem("isLoggedIn", "true");
 
+        showToast(successMsg);
+
+        setTimeout(() => {
+            window.location.href = 'Home.html';
+        }, 1500);
+
+    } else {
+        showToast(errorMsg, "error");
+    }
+});
+</script>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav ul").classList.toggle("active");
+        }
     </script>
+
 </body>
 
 </html>
